@@ -27,14 +27,14 @@ class Settings:
 settings = None
 if not settings:
     settings = Settings()
-    project_root = str(Path(__file__).resolve().parent.parent.parent)
+    project_root = str(Path(__file__).resolve().parent.parent)
     try:
-        with open(os.path.join(project_root, "etc", "settings.json"), "r") as file:
+        with open(os.path.join(project_root, "settings.json"), "r") as file:
             configs = json.load(file)
             settings.settings = configs
         settings.locked = True
     except FileNotFoundError:
-        print("Please create a settings.json file in src/etc/settings.json")
+        print("Please create a settings.json file in src/settings.json")
         sys.exit()
     except json.decoder.JSONDecodeError:
         print("settings.json file not in a readable json format")
